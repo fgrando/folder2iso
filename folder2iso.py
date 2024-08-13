@@ -7,9 +7,11 @@ FOLDER2ISO_VERSION = "0.0.1"
 
 
 def create_iso_from_folder(dir_path, iso_path):
-    print(f"reading '{dir_path}'...")
+    title = os.path.basename(iso_path).replace(".iso", "")
+    print(f"reading '{dir_path}' folder to create {title}")
+
     iso = pycdlib.PyCdlib()
-    iso.new(interchange_level=4)
+    iso.new(interchange_level=4, vol_ident=title)
 
     for root, dirs, files in os.walk(dir_path):
         # create all folders first
