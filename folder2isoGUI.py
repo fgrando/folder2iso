@@ -1,5 +1,9 @@
 #!/bin/python3
+import os
+import sys
 
+from folder2iso import *
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import (
     QFileDialog,
     QLabel,
@@ -8,13 +12,6 @@ from PyQt5.QtWidgets import (
     QApplication,
     QMessageBox,
 )
-
-from PyQt5.QtGui import QFont
-
-import os
-import sys
-
-from folder2iso import *
 
 
 class MainWidget(QMainWindow):
