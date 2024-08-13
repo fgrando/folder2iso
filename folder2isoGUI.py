@@ -4,12 +4,9 @@ from PyQt5.QtWidgets import (
     QFileDialog,
     QLabel,
     QSizePolicy,
-    QWidget,
     QMainWindow,
     QApplication,
-    QVBoxLayout,
     QMessageBox,
-    QLineEdit,
 )
 
 from PyQt5.QtGui import QFont
@@ -25,20 +22,16 @@ class MainWidget(QMainWindow):
         super().__init__()
         title = os.path.basename(sys.argv[0]).replace(".py", "")
         self.setWindowTitle(f"{title} {FOLDER2ISO_VERSION}")
-        self.resize(250, 180)
+        self.resize(250, 150)
         self.setAcceptDrops(True)
 
         self.prefix = "<datetime format here>"
 
-        widget = QWidget()
-        layout = QVBoxLayout()
-        self.display = QLabel("Drag folder here", widget)
+        self.display = QLabel("Drag folder here")
         self.display.setFont(QFont("Arial", 25))
         self.display.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
-        layout.addWidget(self.display)
-        widget.setLayout(layout)
-        self.setCentralWidget(widget)
+        self.setCentralWidget(self.display)
 
     def dragEnterEvent(self, event):
         if event.mimeData().hasUrls():
@@ -67,7 +60,6 @@ class MainWidget(QMainWindow):
         )
         if fileName:
             return fileName
-            print(fileName)
         return None
 
 
